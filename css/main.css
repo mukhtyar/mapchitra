@@ -267,11 +267,16 @@ header {
   min-height: 30px;
   height: 20vh;
   margin:0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   border-top: 5px solid #eee;
   box-shadow:inset 0 0 3px rgba(0,0,0,.2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .title {
@@ -279,11 +284,15 @@ header {
 }
 
 .social-networks {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .social-networks li {
-  flex: 1;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+   flex: 1;
   margin: 0 0.5 0 0;
 }
 
@@ -298,8 +307,6 @@ li [class^="icon-"], li [class*=" icon-"] {
   padding: 4px 0 0 0 !important;
   font-size: 22px !important;
   border-radius: 50%;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
   line-height: 24px !important;
   width: 2em; 
   height: 2em; 
@@ -307,9 +314,6 @@ li [class^="icon-"], li [class*=" icon-"] {
   text-decoration: none !important;
   color: #fff !important;
   -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  -ms-transition: all 0.3s;
   transition: all 0.3s;
   text-shadow: none !important;
 }
@@ -372,12 +376,18 @@ li [class^="icon-"], li [class*=" icon-"] {
 
 .portfolio-filter {
   margin: 0 8em;
-  display: flex;
-  justify-content: center;
   border-bottom: 1px solid rgba(0,0,0,.2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .portfolio-filter li {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
   font-size: 0.8em;
   border: 0;
@@ -401,24 +411,41 @@ li [class^="icon-"], li [class*=" icon-"] {
 
 .portfolio-items {
   margin: 2em 2em;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
   padding: 0 1%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
 }
 
 .project {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
   flex-grow: 1;
+  -ms-flex-negative: 1;
   flex-shrink: 1;
+  -ms-flex-preferred-size: auto;
   flex-basis: auto;
   max-width: 100%;
   margin: 15px 1% 30px 1%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   font-size: 1em;
   border: 5px solid #eee;
   background-color: #fff;
+   -webkit-transition: flex-grow 200ms, -webkit-box-flex 200ms;
+  transition: flex-grow 200ms, -webkit-box-flex 200ms;
   transition: flex-grow 200ms;
+  transition: flex-grow 200ms, -webkit-box-flex 200ms, -ms-flex-positive 200ms
 }
 
 .project:hover {
@@ -426,6 +453,8 @@ li [class^="icon-"], li [class*=" icon-"] {
 }
 
 .project.hidden {
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
   flex-grow: 0;
   border: 0;
 }
