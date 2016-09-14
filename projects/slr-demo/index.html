@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Sea Level Rise | Cal-Adapt</title>
+		<meta name="description" content="Sea Level Rise using GIS data and 3Di by Radke et al., 2016">
+			<meta property="og:description" content="Sea Level Rise using GIS data and 3Di by Radke et al., 2016">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Open+Sans+Condensed:300,700">
+		<link href="css/main.css" rel="stylesheet" type="text/css">
+    <noscript><link rel="stylesheet" href="css/noscript.css" /></noscript>
+   <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="//d3js.org/d3-tile.v0.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.9.0/d3-legend.min.js"></script>
+    <script src="js/noUiSlider/nouislider.js"></script>
+    <noscript><link rel="stylesheet" href="css/noscript.css" /></noscript>
+    <link href="js/noUiSlider/nouislider.css" rel="stylesheet" type="text/css">
+    <link href="js/noUiSlider/nouislider.pips.css" rel="stylesheet" type="text/css">
+    <link href="js/noUiSlider/nouislider.tooltips.css" rel="stylesheet" type="text/css">
+		
+    <style type="text/css">
+
+      .stroke {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 2;
+      }
+
+      .wrapper {
+        margin: 1em 0 1em;
+      }
+
+      .map {
+        width: 100%;
+        background-color: #f6f6f6;
+        position: relative;
+        height: 600px;
+      }
+
+      svg {
+        position: absolute;
+        z-index: 1;
+      }
+
+      form {
+        width: 100%;
+        margin: 0;
+      }
+
+      /* Overrides for default styles in noUiSlider module  */
+      .noUi-base {
+        z-index: 5;
+      }
+
+      .range-slider.noUi-background {
+        background: #565555;
+        height: 4px;
+        border: none;
+        box-shadow: none;
+        width: 150px;
+
+        .noUi-handle {
+          width: 14px;
+          height: 14px;
+          left: 0;
+          border: none;
+          border-radius: 50%;
+          background: goldenrod;
+          cursor: pointer;
+          box-shadow: none;
+
+          &:after {
+            display: none;
+          }
+
+          &:before {
+            display: none;
+          }
+        }
+      }
+
+      .range-slider .noUi-background {
+        background: #ccc;
+        border: none;
+        box-shadow: none;
+      }
+
+      /* Position the bar and color it. */
+      /* .range-slider .connect {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        background: #80C9F5;
+      } */
+
+      /* When the slider is moved by tap,
+         transition the connect bar like the handle. */
+      /* .range-slider.noUi-state-tap .connect {
+      -webkit-transition: left 300ms, right 300ms;
+        transition: left 300ms, right 300ms;
+      } */
+
+      .range-values {
+        height: 1em;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .range-values:after {
+        content: attr(data-lower-bound) "–" attr(data-upper-bound);
+      }
+
+
+
+      .sliders {
+        float: right;
+        text-align: center;
+        z-index: 2;
+      }
+
+      #slr-opacity span, #basemap-opacity span {
+        font-size: 0.8em;
+      }
+
+      #slr-opacity, #basemap-opacity {
+        margin: 1em;
+      }
+
+      .legendLinear text {
+        font-size: 0.8em;
+      }
+
+
+
+    </style>
+
+	</head>
+	<body>
+
+    <!--[if lt IE 11]>
+  <div class="flash-alert" role="alert">
+    <p >You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  </div>
+<![endif]-->
+
+
+
+    <!-- HEADER -->
+    <header id="header" class="reveal alt">
+  <h1>
+    <a href="/">
+    Cal-Adapt
+    </a>
+  </h1>
+  <nav id="nav">
+  <ul>
+    <li><a href="/tools" class="link depth-0">Climate Tools</a></li>
+    <li><a href="/data" class="link depth-0">Data</a></li>
+    <li><a href="/resources" class="link depth-0">Resources</a></li>
+    <li><a href="http://cal-adapt.org/blog/landing/" class="link depth-0">Blog</a></li>
+    <li><a href="/about" class="link depth-0">About</a></li>
+    <li><a href="/help" class="link depth-0">Help</a></li>
+  </ul>
+</nav>
+  <a href="#navPanel" class="navPanelToggle"></a>
+</header>
+
+
+
+    <!-- MAIN CONTENT -->
+    
+<!-- Main -->
+<section id="main" class="wrapper">
+
+  <header class="major">
+    <h2>Sea Level Rise</h2>
+    <p>
+      Global models indicate that California will see substantial sea level rise during this century, with the exact magnitude depending on such factors as, global emissions, rate at which oceans absorb heat, melting rates and movement of land-based ice sheets, and local coastal land subsidence or uplift.
+    </p>
+    <ul class="icons">
+      <li><a data-scroll href="#explore" class="icon fa-line-chart"><span>Explore</span></a></li>
+      <li><a data-scroll href="#about" class="icon fa-info-circle"><span>About</span></a></li>
+      <li><a data-scroll href="#data" class="icon fa-database"><span>Data Sources</span></a></li>
+    </ul>
+  </header>
+
+  <section id="explore">
+    <div class="container align-center">
+      <ul class="options-grp location">
+        <li class="button">
+          <input type="radio" name="locationOpts" value="delta"  />
+          <label for="delta">Sacramento - San Joaquin Delta</label>
+        </li>
+        <li class="button active">
+          <input type="radio" name="locationOpts" value="sfbay" checked/>
+          <label for="sfbay">San Francisco Bay Area</label>
+        </li>
+        <li class="button">
+          <input type="radio" name="locationOpts" value="coast" />
+          <label for="coast">California Coast</label>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="vis-timeseries" class="wrapper">
+    <div class="inner">
+
+    <form>
+      <div class="Grid Grid--gutters Grid--full">
+        <div class="Grid-cell">
+          <ul class="options-grp slr-scenario">
+            <li>
+              <label>Sea Level Rise:</label>
+            </li>
+            <li>
+              <input type="radio" name="slrOpts" value="0_0m" checked/>
+              <label for="0_0m">None</label>
+            </li>
+            <li>
+              <input type="radio" name="slrOpts" value="0_5m"/>
+              <label for="0_5m">0.5 meters</label>
+            </li>
+            <li>
+              <input type="radio" name="slrOpts" value="1_0m"/>
+              <label for="1_0m">1 meters</label>
+            </li>
+            <li>
+              <input type="radio" name="slrOpts" value="1_41m"/>
+              <label for="1_41m">1.41 meters</label>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </form>
+
+    <div class="map">
+      <div class="sliders">
+              <div id="slr-opacity">
+        <span>Change Opacity (Sea Level Rise)</span>
+        <div class="range-slider"></div>
+      </div>
+
+      <div id="basemap-opacity">
+        <span>Change Opacity (Basemap)</span>
+        <div class="range-slider"></div>
+      </div>
+      </div>
+      <svg></svg>
+    </div>
+      
+    </div>
+  </section>
+  
+
+</section>
+
+
+
+     <!-- FOOTER -->
+    <footer id="footer">
+  <div class="inner">
+    <div class="Grid Grid--gutters Grid--full large-Grid--1of3">
+      <div class="Grid-cell">
+        <h3>Content</h3>
+        <ul class="alt">
+          <li><a href="/about">About</a></li>
+          <li><a href="/tools">Climate Tools</a></li>
+          <li><a href="/resources">Resources</a></li>
+          <li><a href="/faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="Grid-cell">
+        <h3>Legal</h3>
+        <ul class="alt">
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/use">Conditions of Use</a></li>
+          <li><a href="/accessibility">Accesibility</a></li>
+          <li><a href="/disclaimer">Disclaimer</a></li>
+        </ul>
+      </div>
+      <div class="Grid-cell">
+        <h3>About</h3>
+        <p>Cal-Adapt has been developed by University of California at Berkeley's  Geospatial Innovation Facility (GIF) with funding and advisory oversight by the  California Energy Commission.</p>
+        <h3>Get In Touch</h3>
+            <ul class="icons">
+              <li>
+                <a href="mailto:support@cal-adapt.org" class="icon fa-envelope"></a>
+              </li>
+              <li>
+                <a href="https://twitter.com/cal_adapt" class="icon fa-twitter"></a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/Cal-Adapt-219385271423774/" class="icon fa-facebook"></a>
+              </li>
+            </ul>
+
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    &copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> California Energy Commission.
+    <br />
+    State of California, Edmund G. Brown Jr., Governor.
+  </div>
+</footer>
+
+   
+
+    <!-- OFF CANVAS RESPONSIVE MENU -->
+    <div id="navPanel">
+        <nav id="nav">
+  <ul>
+    <li><a href="/tools" class="link depth-0">Climate Tools</a></li>
+    <li><a href="/data" class="link depth-0">Data</a></li>
+    <li><a href="/resources" class="link depth-0">Resources</a></li>
+    <li><a href="http://cal-adapt.org/blog/landing/" class="link depth-0">Blog</a></li>
+    <li><a href="/about" class="link depth-0">About</a></li>
+    <li><a href="/help" class="link depth-0">Help</a></li>
+  </ul>
+</nav>
+        <a href="#navPanel" class="close" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></a>
+    </div>
+    
+    <!-- SCRIPTS -->
+    <!-- Scripts common to all pages -->
+
+<script src="js/main.js" charset="utf-8"></script>
+    
+     <!-- Scripts specific to page -->
+    
+  <script src="js/index.js"></script>
+
+     <!-- Google Analytics -->
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1781969-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    
+
+	</body>
+</html>
