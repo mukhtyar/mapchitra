@@ -1,0 +1,499 @@
+/* -------------------------------------------------------- */
+/* Reset */
+/* -------------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  -webkit-text-size-adjust: none;
+}
+
+html, body { height: 100%; }
+
+/* -------------------------------------------------------- */
+/* Box Model */
+/* -------------------------------------------------------- */
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* -------------------------------------------------------- */
+/*  Base */
+/* -------------------------------------------------------- */
+@-ms-viewport {
+  width: device-width;
+}
+
+html {
+  /*background:#1C1C1C;*/
+}
+
+body {
+  background: #ffffff;
+   -ms-overflow-style: scrollbar;
+}
+
+  @media screen and (max-width: 480px) {
+
+    html, body {
+      min-width: 320px;
+    }
+
+  }
+
+/* -------------------------------------------------------- */
+/* Type */
+/* -------------------------------------------------------- */
+
+body, input, select, textarea {
+  color: #444;
+  font-family: 'Noto Serif', serif;
+  font-size: 17pt;
+  line-height: 1.65;
+}
+
+  @media screen and (max-width: 1680px) {
+
+    body, input, select, textarea {
+      font-size: 14pt;
+    }
+
+  }
+
+  @media screen and (max-width: 1280px) {
+
+    body, input, select, textarea {
+      font-size: 12pt;
+    }
+
+  }
+
+  @media screen and (max-width: 360px) {
+
+    body, input, select, textarea {
+      font-size: 11pt;
+    }
+
+  }
+
+a {
+  -moz-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+  -webkit-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+  -ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+  border-bottom: dotted 1px;
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  border-bottom-color: transparent;
+  color: #7B4D8A;
+}
+
+a:active {
+  color: #7B4D8A;
+}
+
+strong, b {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+em, i {
+  font-style: italic;
+}
+
+p {
+  margin: 0 0 1em 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444;
+  font-weight: 600;
+  line-height: 1.65;
+  margin: 0 0 1em 0;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: inherit;
+  border-bottom: 0;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 1.75em;
+}
+
+h3 {
+  font-size: 1.35em;
+}
+
+h4 {
+  font-size: 1.1em;
+}
+
+h5 {
+  font-size: 0.9em;
+}
+
+h6 {
+  font-size: 0.7em;
+}
+
+  @media screen and (max-width: 736px) {
+
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-size: 1.5em;
+    }
+
+    h3 {
+      font-size: 1.25em;
+    }
+
+  }
+
+sub {
+  font-size: 0.8em;
+  position: relative;
+  top: 0.5em;
+}
+
+sup {
+  font-size: 0.8em;
+  position: relative;
+  top: -0.5em;
+}
+
+blockquote {
+  border-left: solid 4px rgba(212, 212, 255, 0.1);
+  font-style: italic;
+  margin: 0 0 2em 0;
+  padding: 0.5em 0 0.5em 2em;
+}
+
+code {
+  background: rgba(212, 212, 255, 0.035);
+  font-family: "Courier New", monospace;
+  font-size: 0.9em;
+  margin: 0 0.25em;
+  padding: 0.25em 0.65em;
+}
+
+pre {
+  -webkit-overflow-scrolling: touch;
+  font-family: "Courier New", monospace;
+  font-size: 0.9em;
+  margin: 0 0 2em 0;
+}
+
+pre code {
+  display: block;
+  line-height: 1.75;
+  padding: 1em 1.5em;
+  overflow-x: auto;
+}
+
+hr {
+  border: 0;
+  border-bottom: solid 1px rgba(212, 212, 255, 0.6);
+  margin: 2em 0;
+}
+
+  hr.major {
+    margin: 3em 0;
+  }
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+/* -------------------------------------------------------- */
+/*  Header */
+/* -------------------------------------------------------- */
+header {
+  background: #f6f6f6;
+  min-height: 30px;
+  height: 20vh;
+  margin:0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 5px solid #eee;
+  box-shadow:inset 0 0 3px rgba(0,0,0,.2);
+}
+
+.title {
+  margin: 0 0 0 1em;
+}
+
+.social-networks {
+  display: flex;
+}
+
+.social-networks li {
+  flex: 1;
+  margin: 0 0.5 0 0;
+}
+
+li [class^="icon-"], li [class*=" icon-"] {
+  display: inline-block;
+  width: 2em!important; 
+  text-align: center;
+}
+
+.social-networks a {
+  margin: 10px 10px 0 0;
+  padding: 4px 0 0 0 !important;
+  font-size: 22px !important;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  line-height: 24px !important;
+  width: 2em; 
+  height: 2em; 
+  background: #222;
+  text-decoration: none !important;
+  color: #fff !important;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+  text-shadow: none !important;
+}
+
+.social-networks .icon-twitter {
+  border: 3px solid #31CDFD;
+}
+
+.social-networks .icon-twitter:hover {
+    background: #31CDFD;
+}
+
+.social-networks .icon-github {
+    border: 3px solid #A9CF54;
+}
+
+.social-networks .icon-github:hover {
+    background: #A9CF54;
+}
+
+.social-networks .icon-linkedin {
+    border: 3px solid #C9402E;
+}
+
+.social-networks .icon-linkedin:hover {
+    background: #C9402E;
+}
+
+@media screen and (min-width: 50em) {
+  header {
+    height: 12vh;
+  }
+}
+
+/* -------------------------------------------------------- */
+/*  Main */
+/* -------------------------------------------------------- */
+#main {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+#main canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.content {
+  z-index: 2;
+  position: relative;
+}
+
+.content-header {
+  margin: 2em 2em;
+  font-size: 1.3em;
+}
+
+.portfolio-filter {
+  margin: 0 8em;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+}
+
+.portfolio-filter li {
+  flex: 1;
+  font-size: 0.8em;
+  border: 0;
+  background: 0;
+  margin: 0 10px 10px 0;
+  padding: 6px 12px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  text-align: center;
+}
+
+.portfolio-filter li.active {
+  color: #fff;
+  background: #222;
+}
+
+.portfolio-filter li a {
+  border-bottom: none;
+}
+
+.portfolio-items {
+  margin: 2em 2em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  padding: 0 1%;
+}
+
+.project {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  max-width: 100%;
+  margin: 15px 1% 30px 1%;
+  display: flex;
+  flex-direction: column;
+  font-size: 1em;
+  border: 5px solid #eee;
+  background-color: #fff;
+  transition: flex-grow 200ms;
+}
+
+.project:hover {
+  border: 5px solid #999;
+}
+
+.project.hidden {
+  flex-grow: 0;
+  border: 0;
+}
+
+.project a {
+  border-bottom: none;
+  display: block;
+  height: 100%;
+}
+
+.project.hidden a {
+  display: none;
+  height: 0;
+}
+
+
+.project a:hover {
+  color: #444;
+}
+
+.project-image {
+  width: 100%;
+}
+
+.project-title {
+  text-align: center;
+}
+
+.project-desc {
+  padding: 0 10px;
+}
+
+.project-extra {
+  padding: 0 10px;
+  text-align: center;
+  width: 2em;
+  background-color: #ddd;
+  width: 100%;
+}
+
+@media screen and (min-width: 45em) {
+  .content-header {
+    margin: 2em 8em;
+  }
+  .portfolio-items {
+    margin: 2em 4em;
+  }
+  .project {
+    max-width: 30%;
+    font-size: 0.8em;
+    margin: 0 1% 30px 1%;
+  }
+}
+
+/* -------------------------------------------------------- */
+/*  Footer */
+/* -------------------------------------------------------- */
+
+footer {
+  background: #1c1c1c;
+  color:#ccc;
+  height: 10vh;
+  min-height: 35px;
+  border-top: 10px solid #292727;
+  padding: 5px;
+  text-align: center;
+}
+
+footer.container {
+  margin: 0 2em;
+}
