@@ -118,17 +118,8 @@ a {
   -ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   border-bottom: dotted 1px;
-  color: inherit;
+  color: #444;
   text-decoration: none;
-}
-
-a:hover {
-  border-bottom-color: transparent;
-  color: #7B4D8A;
-}
-
-a:active {
-  color: #7B4D8A;
 }
 
 strong, b {
@@ -401,12 +392,15 @@ li [class^="icon-"], li [class*=" icon-"] {
 }
 
 .portfolio-filter li.active {
-  color: #fff;
   background: #222;
 }
 
 .portfolio-filter li a {
   border-bottom: none;
+}
+
+.portfolio-filter li.active a {
+  color: #fff;
 }
 
 .portfolio-items {
@@ -424,12 +418,8 @@ li [class^="icon-"], li [class*=" icon-"] {
 
 .project {
   -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -ms-flex-negative: 1;
-  flex-shrink: 1;
-  -ms-flex-preferred-size: auto;
-  flex-basis: auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
   max-width: 100%;
   margin: 15px 1% 30px 1%;
   display: -webkit-box;
@@ -442,10 +432,6 @@ li [class^="icon-"], li [class*=" icon-"] {
   font-size: 1em;
   border: 5px solid #eee;
   background-color: #fff;
-   -webkit-transition: flex-grow 200ms, -webkit-box-flex 200ms;
-  transition: flex-grow 200ms, -webkit-box-flex 200ms;
-  transition: flex-grow 200ms;
-  transition: flex-grow 200ms, -webkit-box-flex 200ms, -ms-flex-positive 200ms
 }
 
 .project:hover {
@@ -453,10 +439,7 @@ li [class^="icon-"], li [class*=" icon-"] {
 }
 
 .project.hidden {
-  -webkit-box-flex: 0;
-  -ms-flex-positive: 0;
-  flex-grow: 0;
-  border: 0;
+  display: none;
 }
 
 .project a {
