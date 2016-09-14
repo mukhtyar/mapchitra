@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		e.stopPropagation();
 
 		var el = e.currentTarget;
-		removeClassFromSiblings(el);
+		removeClassFromSiblings(el, 'active');
 		el.classList.add('active');
 		var filterTerm = el.firstChild.getAttribute('data-filter');
 		projects.forEach(function (item) {
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	  filter.addEventListener('click', filterProjects);
 	});
 
-	function removeClassFromSiblings(el, className = 'active') {
+	function removeClassFromSiblings(el, className) {
 	  Array.prototype.filter.call(el.parentNode.children, function (child) {
 	    if (child !== el) {
 	      child.classList.remove(className);
