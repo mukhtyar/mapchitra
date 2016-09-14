@@ -52,17 +52,21 @@ document.addEventListener('DOMContentLoaded', function() {
 	/* --------------------------------------------------------	
 	Main
    	--------------------------------------------------------	*/
-   	var main = document.getElementById('main');
-   	var mainContent = document.getElementsByClassName('content')[0]
-	var pattern = Trianglify({
-	  height: main.offsetHeight,
-	  width: main.offsetWidth,
-	  x_colors: 'Greys',
-	  y_colors: 'YlGnBu',
-	  cell_size: 40
-	});
+   	var mq = window.matchMedia( "(min-width: 45em)" );
+   	if (mq.matches) {
+	  	// window width is at least 45em
+	  	var main = document.getElementById('main');
+	   	var mainContent = document.getElementsByClassName('content')[0]
+		var pattern = Trianglify({
+		  height: main.offsetHeight,
+		  width: main.offsetWidth,
+		  x_colors: 'Greys',
+		  y_colors: 'YlGnBu',
+		  cell_size: 40
+		});
 
-	main.insertBefore(pattern.canvas(), mainContent);
+		main.insertBefore(pattern.canvas(), mainContent);
+	}
 
 
 });
