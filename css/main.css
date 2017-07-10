@@ -145,7 +145,7 @@ header a:hover, header a:focus, header a:visited {
 }
 
 .bg {
-  background-image: linear-gradient(to right, #ece9e6, #ffffff);
+  background-image: linear-gradient(to right, rgba(236, 233, 230,0.9), rgba(255, 255, 255, 0.9));
   padding:  none;
 }
 
