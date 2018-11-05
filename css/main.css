@@ -101,11 +101,12 @@ a:hover, a:focus, a:visited {
   border-bottom: dotted 1px rgba(17, 17, 17, 0.3);
 }
 
-header a {
+header a, li a {
   border-bottom: dotted 1px rgba(206, 223, 233, 1);
 }
 
-header a:hover, header a:focus, header a:visited {
+header a:hover, header a:focus, header a:visited,
+li a:hover, li a:focus, li a:visited {
   border-bottom: dotted 1px rgba(206, 223, 233, 0.5);
 }
 
