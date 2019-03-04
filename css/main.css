@@ -4,44 +4,59 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+/*   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+  font-family: 'Open Sans', sans-serif;
   background: #333333;
   line-height: 1.5;
-  color:  #cedfe9;
+  color: #cedfe9;
+  font-weight: 300;
 }
 
-.header {
-  margin: 10vh 1.5vw;
+.content {
+  width: 80%;
+  margin: 4rem auto 2rem;
+  max-width: 1400px;
+}
+
+@media(max-width: 800px) {
+  .content {
+    width: 100%;
+  }
+}
+
+.tagline {
+  margin: 3vh 1.5vw;
+  color: #cedfe9;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
   text-align: center;
 }
 
-.header.sub {
-  margin: 3vh 1.5vw;
+.header {
+  margin: 4vh 1.5vw;
+  text-align: center;
 }
 
-.header h1,
-.header h2 {
-  margin: 0;
+.header h1 {
+  color: #ffffff;
+  font-size: 4rem;
+  font-family: 'Spirax', cursive;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
 }
 
-.header h1 {
-  position: relative;
-  padding-bottom: 0.5rem;
-  color: #ffffff;
-  font-size: 4rem;
-}
-
 .header h2 {
-  font-weight: normal;
-  font-size: 0.875rem;
-  padding-bottom: 1rem;
+  color: #ffffff;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
 }
 
 .header p {
-  width:  95%;
+  width:  80%;
   margin:  0 auto;
+  font-size: 1.25rem;
 }
 
 .social {
@@ -60,132 +75,227 @@ body {
   margin-right: 1rem;
 }
 
-@media screen and (min-width: 750px) {
-
-  .header h1 {
-    font-size: 3.75rem;
-  }
-
-  .header h2 {
-    font-weight: normal;
-    font-size: 1.125rem;
-    letter-spacing: 0.5em;
-  }
-
-  .header p {
-    width: 75%;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-
-  .header h1 {
-    font-size: 6rem;
-  }
-
-  .header h2 {
-    font-weight: normal;
-    font-size: 1.5rem;
-  }
-}
-
 a {
   text-decoration: none;
   color: inherit;
-  border-bottom: dotted 1px rgba(17, 17, 17, 1);
+  border-bottom: dotted 1px #FBE6C0;
 }
 
-a:hover, a:focus, a:visited {
+a:hover, a:focus {
   text-decoration: none;
   color: inherit;
-  border-bottom: dotted 1px rgba(17, 17, 17, 0.3);
-}
-
-header a, li a {
-  border-bottom: dotted 1px rgba(206, 223, 233, 1);
-}
-
-header a:hover, header a:focus, header a:visited,
-li a:hover, li a:focus, li a:visited {
   border-bottom: dotted 1px rgba(206, 223, 233, 0.5);
 }
 
-.grid {
-  display: flex;
-  flex-flow: row wrap;
-  padding: 0.75vw;
+header a, li a {
+  border-bottom: dotted 1px #FBE6C0;
 }
 
-.grid .item {
-  margin: 0.75vw;
+header a:hover, header a:focus,
+li a:hover, li a:focus {
+  border-bottom: dotted 1px rgba(206, 223, 233, 0.5);
 }
 
-.grid .item.hero  { flex: 0 1 calc(100% - 1.5vw); }
-.grid .item.big  { flex: 0 1 calc(100% - 1.5vw); }
-.grid .item.medium  { flex: 0 1 calc(100% - 1.5vw); }
-.grid .item.small  { flex: 0 1 calc(50% - 1.5vw); }
-
-@media screen and (min-width: 750px) {
-  .grid .item.big  { flex: 0 1 calc(60% - 1.5vw); }
-  .grid .item.medium  { flex: 0 1 calc(40% - 1.5vw);}
-  .grid .item.small  { flex: 0 1 calc(33.333% - 1.5vw); }
+figure {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+  margin: 0;
+  border: 10px solid #2F5567;
 }
-
-@media screen and (min-width: 1400px) {
-  .grid .item.big  { flex: 0 1 calc(60% - 1.5vw); }
-  .grid .item.medium  { flex: 0 1 calc(40% - 1.5vw); }
-  .grid .item.small  { flex: 0 1 calc(25% - 1.5vw); }
+figure * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
 }
-
-.box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding:  10px;
-  flex-flow:  column wrap;
+figure img {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
 }
-
-.bg {
-  background-image: linear-gradient(to right, rgba(236, 233, 230,0.9), rgba(255, 255, 255, 0.9));
-  padding:  none;
+figure:after {
+  background: #FFCB3F;
+  width: 0;
+  height: 6px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: '';
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
-
-.bg-text {
-  color: rgba(17, 17, 17, 1) ;
+figure figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background: rgba(47, 85, 103, 0.7);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
-
-.box.align-left {
-  align-items: flex-start;
+figure span {
+  margin: 0;
+  width: 100%;
+  color: #FBE6C0;
 }
-
-.box p {
-  margin-top: 0;
-}
-
-.box a {
-  border-bottom: dotted 1px #AAAAAA;
-}
-
-.box a.icon {
-  padding-left:  10px;
-  cursor: pointer;
+figure a {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 1;
   border-bottom: none;
 }
-
-.grid .item {
-  position: relative;
-  padding: 1vw;
-  background-position:  left bottom;
-  transition: background 500ms, outline 500ms;
-  background-position: top left;
-  outline: transparent;
+figure:hover img,
+figure.hover img {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+figure:hover:after,
+figure.hover:after {
+  width: 100%;
 }
 
-.grid .item:hover,
-.grid .item:focus {
-  background-position: top right;
+.flex-gallery {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 70vh;
+  min-height: 400px;
 }
 
-.grid .item:focus {
-  outline: 2px solid #3eabfa;
+.flex-gallery .item {
+  border: 8px solid #2F5567;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  background-position: center;
+  background-size: cover;
+  background-repeat: none;
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  margin-right: -14px;
+  box-shadow: 0 1px 4px 0 rgba(10,16,34,0.2);
+  will-change: flex, transform, box-shadow;
+  transition: flex 700ms ease, transform 700ms ease, box-shadow 700ms ease, -webkit-transform 700ms ease, border-radius 700ms ease;
+}
+
+.flex-gallery .item .item-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+.flex-gallery .item .item-content .item-header {
+  background: #2F5567;
+  height: 4rem;
+  margin: 0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+.flex-gallery .item .item-content .item-body {
+  background: rgba(47, 85, 103, 0.7);
+  opacity: 0;
+  color: #FBE6C0;
+}
+.flex-gallery .item:first-child {
+  z-index: 5 !important;
+}
+.flex-gallery .item:nth-child(2) {
+  z-index: 4 !important;
+}
+.flex-gallery .item:nth-child(3) {
+  z-index: 3 !important;
+}
+.flex-gallery .item:nth-child(4) {
+  z-index: 2 !important;
+}
+.flex-gallery .item:last-child {
+  z-index: 1 !important;
+  margin-right: 0 !important;
+}
+.flex-gallery .item:hover {
+  flex: 5;
+  z-index: 999 !important;
+  box-shadow: 0 12px 24px 0 rgba(10,16,34,0.3), 0 0 0 transparent;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.flex-gallery .item:hover .item-body {
+  opacity: 1;
+}
+.flex-gallery .item-1 {
+  background-image: url("/img/cal-adapt.png");
+}
+.flex-gallery .item-2 {
+  background-image: url("/img/compass.png");
+}
+.flex-gallery .item-3 {
+  background-image: url("/img/AdaptationClearinghouse.png");
+}
+.flex-gallery .item-4 {
+  background-image: url("/img/banner_sfbay_1140x560.jpg");
+}
+
+
+.grid {
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-rows: calc((90% / 20) - 20px);
+  grid-template-columns: calc((100% / 15) - 20px);
+  list-style-type: none;
+}
+
+.grid-item {
+  display: flex;
+  width: 100%;
+}
+
+.grid-item:nth-child(1) {
+  grid-area: 2 / 2 / 4 / 7;
+}
+.grid-item:nth-child(2) {
+  grid-area: 1 / 7 / 5 / 14;
+}
+.grid-item:nth-child(3) {
+  grid-area: 5 / 1 / 8 / 7;
+}
+.grid-item:nth-child(4) {
+  grid-area: 6 / 7 / 10 / 11;
+}
+.grid-item:nth-child(5) {
+  grid-area: 5 / 11 / 8 / 15;
+}
+.grid-item:nth-child(6) {
+  grid-area: 8 / 7 / 11  / 14;
+}
+.grid-item:nth-child(7) {
+  grid-area: 8 / 2 / 10 / 7;
+}
+
+@media screen and (max-width: 800px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+  }
+  .grid-item {
+    flex: 1;
+  }
+}
+
+@supports not (display: grid) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+  }
+  .grid-item {
+    flex: 1;
+  }
 }
