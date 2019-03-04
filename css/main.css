@@ -59,6 +59,12 @@ body {
   font-size: 1.25rem;
 }
 
+@media screen and (max-width: 800px) {
+  .header p {
+    font-size: 1rem;
+  }
+}
+
 .social {
   padding-top: 2rem;
 }
@@ -87,11 +93,6 @@ a:hover, a:focus {
   border-bottom: dotted 1px rgba(206, 223, 233, 0.5);
 }
 
-header a, li a {
-  border-bottom: dotted 1px #FBE6C0;
-}
-
-header a:hover, header a:focus,
 li a:hover, li a:focus {
   border-bottom: dotted 1px rgba(206, 223, 233, 0.5);
 }
@@ -196,7 +197,6 @@ figure.hover:after {
   background: #2F5567;
   height: 4rem;
   margin: 0;
-  font-size: 0.9rem;
   text-transform: uppercase;
 }
 .flex-gallery .item .item-content .item-body {
@@ -243,9 +243,38 @@ figure.hover:after {
   background-image: url("/img/banner_sfbay_1140x560.jpg");
 }
 
+@media screen and (max-width: 800px) {
+  .flex-gallery {
+    flex-direction: column;
+    height: auto;
+  }
+  .flex-gallery .item {
+    min-height: 400px;
+    margin-right: 0;
+  }
+  .flex-gallery .item .item-content .item-header {
+    text-align: center;
+  }
+}
+
+.list {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.list li {
+  padding-bottom: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+  .list {
+    padding: 0 2rem;
+  }
+}
 
 .grid {
   margin: 0 auto;
+  padding: 0;
   display: grid;
   grid-gap: 10px;
   grid-template-rows: calc((90% / 20) - 20px);
@@ -284,6 +313,7 @@ figure.hover:after {
   .grid {
     display: flex;
     flex-direction: column;
+    padding: 0 2rem;
   }
   .grid-item {
     flex: 1;
